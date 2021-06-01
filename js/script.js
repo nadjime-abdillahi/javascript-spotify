@@ -1,8 +1,8 @@
+        // Recupere toutes les musiques stocké
 const musiqueRecuperer = document.querySelectorAll("#musiques > ul> li > button")
-
-
+        // parcours les musiques
 musiqueRecuperer.forEach((button , i) => {     
-
+        // creation de l'event du boutton d'ajout a la playliste
     button.addEventListener('click', () => {    
         // Creation balise li
         const nouvelLi = document.createElement('li');
@@ -19,11 +19,11 @@ musiqueRecuperer.forEach((button , i) => {
         // on supprime egalement le boutton supprimer
         nouvelLi.remove(buttonDelete)
         })
-        //Attribution a la balise ul le nouvelle Li
+        // Attribution a la balise ul le nouvelle Li
         lesSons.append(nouvelLi);
-        //Attribution a la balise li nouveau button
+        // Attribution a la balise li nouveau button
         nouvelLi.append(buttonDelete)
-        //Attribution a la balise li le nouveau text
+        // Attribution a la balise li le nouveau text
         nouvelLi.append(nomMusique);
        
     })
