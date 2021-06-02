@@ -29,3 +29,18 @@ musiqueRecuperer.forEach((button , i) => {
     })
 })
 
+bouttonSpotify = document.getElementById('spotify')
+
+bouttonSpotify.addEventListener('click',()=>{     
+
+const spotify = "https://accounts.spotify.com/authorize?response_type=code&client_id=413bb48cf42d45d8918c7f444cf9052f&redirect_uri=http://localhost:5500/javascript-spotify/"; 
+
+        document.location.href=spotify      
+})
+
+bouttonRecherche = document.getElementById('recherche')
+bouttonRecherche.addEventListener('click',()=>{        
+
+const spotify = "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10"
+document.location.href=spotify      
+})
