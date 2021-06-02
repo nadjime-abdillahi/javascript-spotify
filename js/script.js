@@ -1,3 +1,10 @@
+        //Variables 
+        const clienId = '413bb48cf42d45d8918c7f444cf9052f'
+        const redirectURI = 'http://localhost:5500/javascript-spotify/'
+        let accessToken = null
+        
+        
+        
         // Recupere toutes les musiques stocké
 const musiqueRecuperer = document.querySelectorAll("#musiques > ul> li > button")
         // parcours les musiques
@@ -30,22 +37,38 @@ musiqueRecuperer.forEach((button , i) => {
 })
 
 // creation boutton de connexion id
-bouttonSpotify = document.getElementById('spotify')
-// creation de l'event du boutton spotify
-bouttonSpotify.addEventListener('click',()=>{     
-// creation du lien spotify
+bouttonSpotify = document.getElementById('spotify')  
 
-const spotify="https://accounts.spotify.com/authorize?client_id=413bb48cf42d45d8918c7f444cf9052f&response_type=token&scope=user-read-private%20user-read-email&redirect_uri=http://localhost:5500/javascript-spotify/"
-//const spotify = "https://accounts.spotify.com/authorize?response_type=code&client_id=413bb48cf42d45d8918c7f444cf9052f&redirect_uri=http://localhost:5500/javascript-spotify/"; 
-// redirection vers cette url
-        document.location.href=spotify      
+// Connexion à spotify
+bouttonSpotify.addEventListener('click', () => {
+	window.location = `https://accounts.spotify.com/authorize?client_id=${clienId}&response_type=token&redirect_uri=${redirectURI}&scope=playlist-modify-public`;
 })
-// creation boutton recherche
-bouttonRecherche = document.getElementById('recherche')
-// creation de l'event du boutton recherche
 
-bouttonRecherche.addEventListener('click',()=>{        
-       document.createDocumentFragment
-const spotify = "https://api.spotify.com/v1/me?Authorization=Bearer="+ document.getAttribute('response_type');    
-document.location.href=spotify        
-})
+// Création de la fonction qui me permet de récupérer l'accesToken
+bouttonRecherche = document.getElementById('recherche')  
+
+const getAccessToken = () => {
+	const accessTokenMatch = window.location.hash.match(/(?<=access_token=)([^&]*)/)
+	console.log(accessTokenMatch[0])
+	accessToken = accessTokenMatch[0]
+}
+
+getAccessToken()
+
+const searchSong = () => {
+	const options = {
+		method: "GET",
+		headers: {
+        		Accept: "application/json",
+		"Content-Type": "application/json",
+			Authorization: `Bearer ${accessToken}`,
+		},
+	}
+	console.log(accessToken)
+	fetch("https://api.spotify.com/v1/search?q=muse&type=track", options)
+		.then(response => response.json())
+		.then(data => {
+			console.log(data)
+		})
+}
+bouttonRecherche.addEventListener('click', searchSong)
