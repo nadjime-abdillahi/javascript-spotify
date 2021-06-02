@@ -34,7 +34,9 @@ bouttonSpotify = document.getElementById('spotify')
 // creation de l'event du boutton spotify
 bouttonSpotify.addEventListener('click',()=>{     
 // creation du lien spotify
-const spotify = "https://accounts.spotify.com/authorize?response_type=code&client_id=413bb48cf42d45d8918c7f444cf9052f&redirect_uri=http://localhost:5500/javascript-spotify/"; 
+
+const spotify="https://accounts.spotify.com/authorize?client_id=413bb48cf42d45d8918c7f444cf9052f&response_type=token&scope=user-read-private%20user-read-email&redirect_uri=http://localhost:5500/javascript-spotify/"
+//const spotify = "https://accounts.spotify.com/authorize?response_type=code&client_id=413bb48cf42d45d8918c7f444cf9052f&redirect_uri=http://localhost:5500/javascript-spotify/"; 
 // redirection vers cette url
         document.location.href=spotify      
 })
@@ -43,7 +45,7 @@ bouttonRecherche = document.getElementById('recherche')
 // creation de l'event du boutton recherche
 
 bouttonRecherche.addEventListener('click',()=>{        
-       
-const spotify = "https://api.spotify.com/v1/me?Authorization="+DocumentFragment.accessToken+"&Bearer="+DocumentFragment.accessToken;    
+       document.createDocumentFragment
+const spotify = "https://api.spotify.com/v1/me?Authorization=Bearer="+ document.getAttribute('response_type');    
 document.location.href=spotify        
 })
