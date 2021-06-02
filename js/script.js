@@ -29,18 +29,21 @@ musiqueRecuperer.forEach((button , i) => {
     })
 })
 
+// creation boutton de connexion id
 bouttonSpotify = document.getElementById('spotify')
-
+// creation de l'event du boutton spotify
 bouttonSpotify.addEventListener('click',()=>{     
-
+// creation du lien spotify
 const spotify = "https://accounts.spotify.com/authorize?response_type=code&client_id=413bb48cf42d45d8918c7f444cf9052f&redirect_uri=http://localhost:5500/javascript-spotify/"; 
-
+// redirection vers cette url
         document.location.href=spotify      
 })
-
+// creation boutton recherche
 bouttonRecherche = document.getElementById('recherche')
-bouttonRecherche.addEventListener('click',()=>{        
+// creation de l'event du boutton recherche
 
-const spotify = "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10"
-document.location.href=spotify      
+bouttonRecherche.addEventListener('click',()=>{        
+       
+const spotify = "https://api.spotify.com/v1/me?Authorization="+DocumentFragment.accessToken+"&Bearer="+DocumentFragment.accessToken;    
+document.location.href=spotify        
 })
